@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Brookes;Karl;;;
+FN:Karl Brookes
+TITLE:Regional Product Specialist
+ORG:RMS Rehab
+TEL;TYPE=CELL,VOICE:+447740238322
+TEL;TYPE=WORK,VOICE:+441795477280
+EMAIL;TYPE=WORK:karl@rms-rehab.co.uk
+URL:https://www.rms-rehab.co.uk
+ADR;TYPE=WORK:;;Thompson House, Unit 10 Styles Close;Sittingbourne;Kent;ME10 3BF;United Kingdom
+END:VCARD
