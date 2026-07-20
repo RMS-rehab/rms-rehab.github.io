@@ -8,6 +8,9 @@ on:
 jobs:
   archive-traffic:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      repository-projects: read
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
