@@ -1,0 +1,27 @@
+name: Archive GitHub Pages Traffic
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # Runs automatically every Sunday at midnight
+  workflow_dispatch: # Allows you to trigger it manually anytime
+
+jobs:
+  archive-traffic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Fetch Traffic Data
+        run: |
+          mkdir -p traffic-logs
+          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+               -H "Accept: application/vnd.github.v3+json" \
+               https://api.github.com/repos/${{ github.repository }}/traffic/views > traffic-logs/views-$(date +%F).json
+
+      - name: Commit and Push Logs
+        run: |
+          git config --global user.name "Traffic Bot"
+          git config --global user.email "bot@github.com"
+          git add traffic-logs/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Archive traffic logs for $(date +%F)" && git push)
